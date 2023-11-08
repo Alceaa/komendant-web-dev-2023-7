@@ -112,7 +112,7 @@ function evaluate(str) {
     let stack = [];
     let result = "";
     for(let i = 0; i < str.length; i++){
-        if(isDigit(str[i])){
+        if(isNumeric(str[i])){
             stack.push(str[i])
         }
         else{
