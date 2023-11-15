@@ -106,6 +106,7 @@ function compile(str) {
 // (https://ru.wikipedia.org/wiki/Обратная_польская_запись#Вычисления_на_стеке).
 
 function evaluate(str) {
+    console.log(str);
     if(typeof str === 'string'){
         str = str.split(" ");
     }
@@ -151,17 +152,15 @@ function clickHandler(event) {
     let target = event.target;
     let screen = document.getElementsByClassName("screen")[0];
     if(target.className == "key result"){
-        let result = "=" + evaluate(compile(input));
-        screen.getElementsByTagName('span')[0].innerHTML += result;
+        let result = evaluate(compile(input));
+        screen.getElementsByTagName('span')[0].innerHTML = result;
+        input = result.toString();
     }
     else if(target.className == "key clear"){
         input = "";
         screen.getElementsByTagName('span')[0].innerHTML = "";
     }
     else{
-        if(screen.getElementsByTagName('span')[0].innerHTML.includes("=")){
-            screen.getElementsByTagName('span')[0].innerHTML = "";
-        }
         if(input.length < 19){
             screen.getElementsByTagName('span')[0].innerHTML += target.innerText;
             input += target.innerText;
